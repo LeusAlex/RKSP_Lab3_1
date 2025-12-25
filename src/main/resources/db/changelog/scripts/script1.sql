@@ -1,12 +1,10 @@
 CREATE SCHEMA utmn;
 
-CREATE TABLE utmn.student
-
-(
-    id bigserial NOT NULL PRIMARY KEY,
-    fio varchar(128) NOT NULL,
-    passport varchar(20) NOT NULL
+CREATE TABLE utmn.UserEvent (
+    id          BIGSERIAL PRIMARY KEY,
+    event_type  TEXT NOT NULL,
+    event_time  TIMESTAMPTZ NOT NULL
 );
-COMMENT ON TABLE utmn.student IS 'Таблица для храненияинформации о студентах';
-COMMENT ON COLUMN utmn.student.fio IS 'ФИО студента';
-COMMENT ON COLUMN utmn.student.passport IS 'Серия и номерпаспорта студента';
+
+CREATE INDEX idx_userevent_time ON utmn.UserEvent(event_time);
+CREATE INDEX idx_userevent_type ON utmn.UserEvent(event_type);

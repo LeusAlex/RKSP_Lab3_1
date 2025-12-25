@@ -5,20 +5,22 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.OffsetDateTime;
+
 
 @Getter
 @Setter
 @Entity
-@Table(name = "student", schema = "utmn")
-public class Student {
+@Table(name = "userevent", schema = "utmn")
+public class UserEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "fio")
-    private String name;
+    @Column(name = "event_type")
+    private String eventType;
 
-    @Column(name = "passport")
-    private String passport;
+    @Column(name = "event_time")
+    private OffsetDateTime eventTime;
 }
